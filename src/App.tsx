@@ -9,8 +9,19 @@ import { NoteCard } from "./components/note-card";
 export function App() {
 
   const [notes, setNotes] = useState([{
-   id: 1, date: new Date(), content: "Hello word"
+   id: 1, date: new Date(), content: "Hello word",
+   id: 2, date: new Date(), content: "nota 2"
   }])
+
+  function onNoteCreated(content:string) {
+    const newNote = {
+      id: Math.random(),
+      date: new Date(),
+      content, 
+    }
+
+    setNotes([newNote, ...notes ])
+  }
   
   return (
     <div className="mx-auto max-w-6xl my-12 space-y-6">
@@ -30,7 +41,7 @@ export function App() {
       <NewNoteCard />
     
       {notes.map(note=> {
-        return <NoteCard note={note}/>
+        return <NoteCard key={note.id} note={note}/>
       })}
    
 
