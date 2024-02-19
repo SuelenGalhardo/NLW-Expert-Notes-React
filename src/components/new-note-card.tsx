@@ -16,6 +16,7 @@ const speechRecognition = new SpeechRecognitionAPI();
 
 
 export function NewNoteCard({onNoteCreated}:newNoteCardProps) {
+  const [isRecording, setIsRecording] = useState(false);
   const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true);
   const [content, setContent] = useState("");
 
